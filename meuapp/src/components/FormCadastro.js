@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { cadastrarUsuario } from "../services/cadastroService";
 
 function FormCadastro() {
   const [formData, setFormData] = useState({
@@ -10,6 +11,9 @@ function FormCadastro() {
   });
 
   const [enviado, setEnviado] = useState(false);
+  const [erro, setErro] = useState("");
+  const [carregando, setCarregando] = useState(false);
+
 
   function handleChange(e) {
     const { name, value, type, checked } = e.target;
@@ -19,10 +23,19 @@ function FormCadastro() {
     }));
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    console.log("Dados enviados:", formData);
-    setEnviado(true);
+    setErro("");
+    setCarregando(true);
+    try {
+      await cadastrarUsuario(formData);
+      setEnviado(true);
+    } catch (err) {
+      setErro(err.message);
+    } finally {
+      setCarregando(false);
+    }
+
   }
 
   function handleReset() {
@@ -34,6 +47,9 @@ function FormCadastro() {
       aceiteTermos: false,
     });
     setEnviado(false);
+
+    setErro("");
+
   }
 
   if (enviado) {
@@ -50,6 +66,8 @@ function FormCadastro() {
     <div>
       <h2>Formulário de Cadastro</h2>
 
+      {erro && <p style={{ color: "red" }}>{erro}</p>}
+
       <form onSubmit={handleSubmit}>
 
         {/* Input de texto */}
@@ -62,7 +80,6 @@ function FormCadastro() {
             value={formData.nome}
             onChange={handleChange}
             placeholder="Seu nome completo"
-            required
           />
         </div>
 
@@ -76,7 +93,6 @@ function FormCadastro() {
             value={formData.email}
             onChange={handleChange}
             placeholder="seu@email.com"
-            required
           />
         </div>
 
@@ -119,12 +135,15 @@ function FormCadastro() {
             name="aceiteTermos"
             checked={formData.aceiteTermos}
             onChange={handleChange}
-            required
           />
           <label htmlFor="aceiteTermos">Aceito os termos de uso</label>
         </div>
 
-        <button type="submit">Cadastrar</button>
+        <button type="submit" disabled={carregando}>
+          {carregando ? "Salvando..." : "Cadastrar"}
+        </button>
+
+
       </form>
 
       {/* Visualização em tempo real do estado */}

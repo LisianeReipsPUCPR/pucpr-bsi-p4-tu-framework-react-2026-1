@@ -6,7 +6,7 @@ export default function Layout() {
       <nav>
         <Link to="/">Home</Link> |{" "}
         <Link to="/equipe">Equipe</Link> |{" "}
-        <Link to="/contadores">Contadores</Link>|{" "}
+        <Link to="/contadores">Contadores</Link> |{" "}
         <Link to="/cadastro">Cadastro</Link>
       </nav>
 
