@@ -1,0 +1,97 @@
+/* Overlay escuro atrás do modal */
+.termos-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Caixa do modal */
+.termos-modal {
+  background: #fff;
+  border-radius: 8px;
+  padding: 28px 32px;
+  max-width: 520px;
+  width: 90%;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+/* Cabeçalho */
+.termos-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.termos-modal__titulo {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Botão fechar (×) */
+.termos-modal__fechar {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #666;
+  line-height: 1;
+  padding: 0 4px;
+}
+
+.termos-modal__fechar:hover {
+  color: #111;
+}
+
+/* Área de conteúdo (scrollável quando expandido) */
+.termos-modal__corpo {
+  overflow-y: auto;
+  flex: 1;
+  font-size: 0.93rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+/* Link "Leia mais" / "Recolher" */
+.termos-leia-mais {
+  background: none;
+  border: none;
+  color: #1a6edb;
+  cursor: pointer;
+  font-size: 0.93rem;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.termos-leia-mais:hover {
+  color: #0d4fa8;
+}
+
+/* Rodapé do modal */
+.termos-modal__rodape {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.termos-modal__btn-ok {
+  padding: 7px 22px;
+  background: #1a6edb;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.termos-modal__btn-ok:hover {
+  background: #0d4fa8;
+}
