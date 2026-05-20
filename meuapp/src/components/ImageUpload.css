@@ -1,0 +1,177 @@
+/* ImageUpload.css */
+
+.upload-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  max-width: 480px;
+  margin: 0 auto;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.upload-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin: 0;
+}
+
+/* Zona de drop */
+
+.drop-zone {
+  width: 100%;
+  min-height: 220px;
+  border: 2px dashed #a0aec0;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s;
+  background-color: #f8fafc;
+  position: relative;
+  overflow: hidden;
+}
+
+.drop-zone:hover,
+.drop-zone:focus-visible {
+  border-color: #4f46e5;
+  background-color: #eef2ff;
+  outline: none;
+}
+
+/* Estado: arquivo sendo arrastado sobre a zona */
+.drop-zone--active {
+  border-color: #4f46e5;
+  background-color: #e0e7ff;
+  transform: scale(1.01);
+}
+
+/* Estado: imagem já selecionada — cursor padrão, sem hover de seleção */
+.drop-zone--filled {
+  cursor: default;
+  border-style: solid;
+  border-color: #4f46e5;
+}
+
+/* Input real, completamente oculto e fora do fluxo */
+.drop-zone__input {
+  display: none;
+}
+
+/* Placeholder (sem imagem) */
+
+.drop-zone__placeholder {
+  text-align: center;
+  padding: 1.5rem;
+  pointer-events: none; /* Clique passa para o .drop-zone pai */
+}
+
+.drop-zone__icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.drop-zone__text {
+  color: #4a5568;
+  font-size: 0.95rem;
+  margin: 0 0 0.4rem;
+}
+
+.drop-zone__hint {
+  color: #a0aec0;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+/* Preview da imagem */
+
+.drop-zone__preview {
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+/* Mensagens de feedback */
+
+.upload-error {
+  color: #c53030;
+  background: #fff5f5;
+  border: 1px solid #feb2b2;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  font-size: 0.875rem;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.upload-success {
+  color: #276749;
+  background: #f0fff4;
+  border: 1px solid #9ae6b4;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  font-size: 0.875rem;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  word-break: break-all;
+}
+
+.upload-success a {
+  color: #2f855a;
+  font-weight: 600;
+}
+
+/* Botões */
+
+.upload-actions {
+  display: flex;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.btn {
+  flex: 1;
+  padding: 0.65rem 1.25rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn--primary {
+  background-color: #4f46e5;
+  color: #fff;
+}
+
+.btn--primary:hover:not(:disabled) {
+  background-color: #4338ca;
+}
+
+.btn--secondary {
+  background-color: #e2e8f0;
+  color: #2d3748;
+}
+
+.btn--secondary:hover:not(:disabled) {
+  background-color: #cbd5e0;
+}
